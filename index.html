@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Comandos Terminal & CMD - Gregory Marcell</title>
+  <meta name="description" content="Comandos para macOS (Terminal) e Windows (CMD) — versão do Gregory."/>
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root{
+      --page-bg:#f4f4f4;
+      --text:#222;
+      --card-bg:#ffffff;
+      --code-bg:#efefef;
+      --accent:#000;
+      --sidebar-bg:#0c1014;
+      --sidebar-tx:#fff;
+      --border:#dcdcdc;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --page-bg:#111417;
+        --text:#e7e7e7;
+        --card-bg:#0f1419;
+        --code-bg:#1b2228;
+        --border:#232b33;
+      }
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial,Helvetica,sans-serif;
+      background:var(--page-bg);
+      color:var(--text);
+      line-height:1.5;
+      min-height:100vh;
+    }
+
+    /* Sidebar fixa à esquerda */
+    .sidebar{
+      position:fixed;
+      left:0; top:0; bottom:0;
+      width:220px;
+      background:var(--sidebar-bg);
+      color:var(--sidebar-tx);
+      padding:18px 12px;
+      overflow:auto;
+      z-index:1000;
+    }
+    .sidebar h2{margin:0 0 12px;font-size:1.05rem}
+    .sidebar a{display:block;color:var(--sidebar-tx);text-decoration:none;padding:6px 4px;border-radius:4px}
+    .sidebar a:hover{background:rgba(255,255,255,.06)}
+
+    /* Conteúdo principal com margem para a sidebar */
+    .wrap{margin-left:220px;padding:20px 24px 96px;max-width:980px}
+    header.page-title{margin:0 0 18px}
+    header.page-title h1{margin:0;font-size:1.6rem}
+
+    /* Cartões brancos com borda lateral preta */
+    .card{
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      border-left:6px solid var(--accent);
+      border-radius:8px;
+      padding:16px;
+      margin-bottom:18px;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+    }
+
+    .block-sep{height:10px} /* espaço entre blocos internos */
+
+    /* Caixa de comando cinza */
+    pre.cmd{
+      background:var(--code-bg);
+      border-radius:6px;
+      padding:12px;
+      overflow:auto;
+      margin:8px 0;
+      border:1px solid rgba(0,0,0,0.04);
+      font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+      font-size:0.92rem;
+      white-space:pre-wrap;
+      word-break:break-word;
+    }
+    .note{font-size:0.9rem;color:var(--text);opacity:0.85;margin-top:6px}
+
+    /* Aviso de segurança */
+    .warning{
+      border-left:4px solid #d9534f;
+      background: #fff6f6;
+      color:#6b0000;
+      padding:10px;
+      border-radius:6px;
+      font-size:0.95rem;
+      margin-top:8px;
+    }
+
+    /* Botão voltar ao topo */
+    .top-btn{
+      display:inline-block;padding:8px 12px;background:#007bff;color:#fff;border-radius:6px;text-decoration:none;
+      margin-top:10px;
+    }
+
+    /* Footer fixo (evita sobreposição do conteúdo) */
+    footer{
+      position:fixed;left:0;right:0;bottom:0;background:#0c1014;color:#a7a7a7;text-align:center;padding:6px 0;font-size:12px;
+      border-top:1px solid #1c232b;
+    }
+
+    /* Responsivo: sidebar vira barra superior */
+    @media (max-width:900px){
+      .sidebar{position:static;width:auto;height:auto;display:flex;gap:8px;flex-wrap:wrap;padding:10px}
+      .wrap{margin-left:0;padding:12px 14px 100px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SIDEBAR (sumário fixo) -->
+  <aside class="sidebar" aria-label="Sumário">
+    <h2>Sumário</h2>
+    <a href="#macbook">MACBOOK TERMINAL</a>
+    <a href="#mac-dock">Mesa e Dock (macOS)</a>
+    <a href="#terminal-otimizar">Terminal - Otimizar Mac</a>
+    <a href="#comando-solido">Comando Sólido</a>
+    <a href="#verificar-disco">Verificar Armazenamento</a>
+    <a href="#cmd-windows">CMD - Windows</a>
+    <small style="display:block;margin-top:12px;opacity:.8">Pág: comandosprog</small>
+  </aside>
+
+  <div class="wrap">
+    <header class="page-title">
+      <h1>Comandos: MACBOOK TERMINAL & CMD (Windows)</h1>
+      <p class="note">Conteúdo colocado exatamente conforme enviado — blocos separados por linhas. Use com cautela (comandos com sudo e rm são potencialmente destrutivos).</p>
+    </header>
+
+    <!-- ===== MACBOOK TERMINAL (bloco principal) ===== -->
+    <section id="macbook" class="card" aria-labelledby="macbook">
+      <h2 id="macbook" style="margin-top:0">MACBOOK TERMINAL</h2>
+
+      <div style="border-top:1px solid #eee;margin-top:8px;padding-top:10px">
+        <div><strong>Alterar o delay para mostrar o Dock</strong></div>
+        <pre class="cmd">defaults write com.apple.dock autohide-delay -float 0; killall Dock</pre>
+      </div>
+
+      <div class="block-sep"></div>
+
+      <div>
+        <div><strong>Travar o tamanho do Dock</strong></div>
+        <pre class="cmd">defaults write com.apple.Dock size-immutable -bool true; killall Dock</pre>
+      </div>
+
+      <div class="block-sep"></div>
+
+      <div>
+        <div><strong>Voltar o Dock ao seu estado padrão</strong></div>
+        <pre class="cmd">defaults delete com.apple.dock; killall Dock</pre>
+      </div>
+
+      <div class="block-sep"></div>
+
+      <div>
+        <div><strong>Desligar em horário específico</strong></div>
+        <pre class="cmd">sudo pmset schedule sleep "10/30/2024 21:00:00"</pre>
+      </div>
+
+      <div class="block-sep"></div>
+
+      <div>
+        <div><strong>Testar DISCO SÓLIDO (macOS)</strong></div>
+        <pre class="cmd">time dd if=/dev/zero of="/Volumes/Greg SSD/testfile" bs=100m count=1</pre>
+      </div>
+
+      <div class="block-sep"></div>
+
+      <div>
+        <div><strong>Testar FlashDrive (macOS)</strong></div>
+        <pre class="cmd">sync
+time dd if=/Volumes/NOMEDOPENDRIVE/testfile of=/dev/null bs=100m</pre>
+      </div>
+
+      <div class="block-sep"></div>
+
+      <div>
+        <div><strong>Como desativar e apagar backups locais (macOS)</strong></div>
+        <div class="note"><strong>Apagar todos os snapshots locais:</strong> (copia & editar) - isto força o sistema a tentar apagar o máximo possível</div>
+        <pre class="cmd">sudo tmutil thinlocalsnapshots / 999999999999</pre>
+
+        <div class="block-sep"></div>
+
+        <div class="note"><strong>Desativar backup local (definitivamente):</strong> (copia & editar) — em versões recentes do macOS pode não surtir efeito</div>
+        <pre class="cmd">sudo tmutil disablelocal</pre>
+      </div>
+
+      <div class="block-sep"></div>
+
+      <div>
+        <div><strong>Insira o comando para encontrar seu IP (macOS)</strong></div>
+        <div class="note">Para conexões a cabo: <code>ipconfig getifaddr en1</code> | Wi-Fi: <code>ipconfig getifaddr en0</code></div>
+        <pre class="cmd">ipconfig getifaddr $(route get default | grep interface | awk '{print $2}')</pre>
+      </div>
+
+    </section>
+
+    <!-- ===== Terminal otimizar (mac) ===== -->
+    <section id="terminal-otimizar" class="card" aria-labelledby="terminal-otimizar">
+      <h2 id="terminal-otimizar">Terminal para otimizar computador (macOS)</h2>
+
+      <pre class="cmd"># Desativar
+setopt +o nomatch
+
+# Limpar o cache do sistema
+sudo rm -rfv /Library/Caches/*
+sudo rm -rfv ~/Library/Caches/*
+sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
+sudo sysctl vm.swappiness=10
+sudo periodic daily weekly monthly
+
+# Limpar logs do sistema
+sudo rm -rf /private/var/log/*
+sudo rm -rfv /var/log/*
+sudo rm -rfv /Library/Logs/*
+sudo rm -rf /Library/Logs/*
+sudo rm -rfv ~/Library/Logs/*
+sudo rm -rf ~/Library/Logs/*
+
+# Limpar cache do Google Chrome (Mac)
+rm -rf ~/Library/Caches/Google/Chrome
+
+# Forçar a liberação de memória
+sudo purge
+sync; sudo purge
+
+sudo mdutil -E
+sudo rm -rf /.metadata_never_index
+sudo mdutil -E /
+
+# Limpar cache do Safari
+rm -rf ~/Library/Caches/com.apple.Safari
+rm -rf ~/Library/Caches/com.apple.Safari/*
+
+# Verificar e reparar permissões de disco
+sudo diskutil resetUserPermissions / `id -u`
+
+# Atualizar os aplicativos do sistema 
+sudo softwareupdate -ia
+softwareupdate --install --all
+
+# Ativar
+setopt nomatch</pre>
+
+      <div class="note">*Aviso:* muitos desses comandos removem caches e logs — use com atenção. Alguns comandos podem exigir senha de administrador.</div>
+    </section>
+
+    <!-- ===== Comando Sólido (mac) ===== -->
+    <section id="comando-solido" class="card" aria-labelledby="comando-solido">
+      <h2 id="comando-solido">Comando Sólido (macOS)</h2>
+
+      <pre class="cmd">sync; sudo purge
+sudo rm -rfv ~/Library/Caches/*
+sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
+sudo rm -rf /private/var/log/*
+sudo rm -rfv /var/log/*
+sudo rm -rfv /Library/Logs/*
+sudo rm -rf /Library/Logs/*
+sudo rm -rfv ~/Library/Logs/*
+sudo rm -rf ~/Library/Logs/*
+sudo rm -rf /Library/Logs/*
+rm -rf ~/Library/Caches/Google/Chrome
+sudo periodic daily weekly monthly
+sudo purge
+sync; sudo purge
+sudo sysctl vm.swappiness=10
+sudo purge</pre>
+
+      <div class="note">(repetições intencionais conforme enviado)</div>
+    </section>
+
+    <!-- ===== Verificar Armazenamento ===== -->
+    <section id="verificar-disco" class="card" aria-labelledby="verificar-disco">
+      <h2 id="verificar-disco">VERIFICAR ARMAZENAMENTO DE DISCOS (macOS)</h2>
+      <pre class="cmd">df -h | grep 100.90.45.25</pre>
+    </section>
+
+    <!-- ===== Mesa e Dock ===== -->
+    <section id="mac-dock" class="card" aria-labelledby="mac-dock">
+      <h2 id="mac-dock">Mesa e Dock (macOS) — configurações</h2>
+
+      <div class="note">
+        Posição na tela: Inferior<br>
+        Minimizar janelas usando: Efeito Escala<br>
+        Dois cliques na barra de título da janela para: Zoom<br>
+        Minimizar janelas para o ícone do aplicativo: Sim<br>
+        Ocultar e exibir o Dock automaticamente: Não<br>
+        Animar abertura de aplicativos: Sim<br>
+        Mostrar indicadores para aplicativos abertos: Sim<br>
+        Mostrar aplicativos recentes no Dock: Não
+      </div>
+
+      <div class="block-sep"></div>
+
+      <div class="note"><strong>Apps de Início</strong><br>Configurações de Sistema &gt; Geral &gt; Itens de Início: Somente Google Drive</div>
+
+      <div class="block-sep"></div>
+
+      <div class="note"><strong>Barra de Menus</strong><br>Ocultar e exibir a barra de menus automaticamente: Somente em Tela Cheia</div>
+
+      <div class="block-sep"></div>
+
+      <div class="note"><strong>Documentos, aplicativos e servidores recentes:</strong> Nenhum</div>
+
+      <div class="block-sep"></div>
+
+      <div class="note"><strong>Janelas e Apps</strong><br>PREFERIR abas ao abrir documentos: Em Tela Cheia<br>Perguntar sobre manter alterações ao fechar documentos: Não<br>Fechar janelas ao encerrar um aplicativo: Sim</div>
+
+      <div class="block-sep"></div>
+
+      <div class="note"><strong>Atalhos Teclado (listados conforme seu texto)</strong><br>
+        Comando (⌘) + Shift + Z: Refazer (após desfazer).<br>
+        Comando (⌘) + S: Salvar.<br>
+        Comando (⌘) + Shift + S: Salvar como.<br>
+        Comando (⌘) + H: Ocultar o aplicativo atual.<br>
+        Comando (⌘) + Option + Esc: Abrir o Gerenciador de Tarefas para forçar o encerramento de um aplicativo.<br>
+        Comando (⌘) + T: Abrir uma nova guia no navegador.<br>
+        Comando (⌘) + W: Fechar a guia atual no navegador.<br>
+        Comando (⌘) + L: Selecionar a barra de endereço no navegador.
+      </div>
+    </section>
+
+    <!-- ===== CMD WINDOWS ===== -->
+    <section id="cmd-windows" class="card" aria-labelledby="cmd-windows">
+      <h2 id="cmd-windows">CMD WINDOWS</h2>
+
+      <div>
+        <div><strong>Mostrar sua senha Wi-Fi</strong></div>
+        <pre class="cmd">netsh wlan show profile EBX Drummond key = clear</pre>
+      </div>
+
+      <div class="block-sep"></div>
+
+      <div>
+        <div><strong>Desligue seu computador depois</strong></div>
+        <pre class="cmd">shutdown -f -t 636</pre>
+      </div>
+
+      <div class="block-sep"></div>
+
+      <div>
+        <div><strong>Arrume problemas de internet</strong></div>
+        <pre class="cmd">ipconfig /release
+ipconfig /renew</pre>
+      </div>
+
+      <div class="block-sep"></div>
+
+      <div>
+        <div><strong>Excluir arquivos temporários</strong></div>
+        <pre class="cmd">del /s /q /f %TEMP%\*
+del /s /q /f C:\Windows\Temp\*
+echo off | clip</pre>
+      </div>
+
+      <div class="block-sep"></div>
+
+      <div>
+        <div><strong>Desabilitar serviços</strong></div>
+        <pre class="cmd">sc config SysMain start= disabled
+sc config DiagTrack start= disabled
+sc config dmwappushservice start= disabled</pre>
+      </div>
+
+      <div class="block-sep"></div>
+
+      <div>
+        <div><strong>Limpar DNS</strong></div>
+        <pre class="cmd">ipconfig /flushdns</pre>
+      </div>
+
+      <div class="block-sep"></div>
+
+      <!-- ATIVAÇÃO: substituição por aviso de segurança -->
+      <div>
+        <div><strong>Ativar Windows — bloco removido por segurança</strong></div>
+        <div class="warning">
+          <strong>Aviso:</strong> você forneceu um bloco que baixa/executa scripts de ativação. Não posso incluir código que facilite ativação ilegal de software ou execução automática de scripts remotos que podem ser maliciosos.  
+          Se quiser, posso:
+          <ul style="margin:6px 0 0 16px;padding:0">
+            <li>Adicionar um lembrete com link para centrais oficiais da Microsoft sobre ativação;</li>
+            <li>Ou inserir um bloco explicando como verificar a ativação via configurações do Windows (legal e seguro).</li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- botão voltar ao topo -->
+    <p style="text-align:center;margin-top:12px">
+      <a class="top-btn" href="#macbook">Voltar ao topo</a>
+    </p>
+
+  </div> <!-- /wrap -->
+
+  <footer>
+    &copy; 2025 Gregory Marcell Rodrigues dos Santos — comandosprog
+  </footer>
+
+</body>
+</html>
