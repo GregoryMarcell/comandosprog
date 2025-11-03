@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ativadores</title>
+  <meta name="description" content="Bloco de comandos e scripts de ativadores organizados."/>
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root{
+      --page-bg:#f4f4f4;
+      --text:#222;
+      --card-bg:#ffffff;
+      --code-bg:#efefef;
+      --accent:#000;
+      --sidebar-bg:#0c1014;
+      --sidebar-tx:#fff;
+      --border:#dcdcdc;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --page-bg:#111417;
+        --text:#e7e7e7;
+        --card-bg:#0f1419;
+        --code-bg:#1b2228;
+        --border:#232b33;
+      }
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial,Helvetica,sans-serif;
+      background:var(--page-bg);
+      color:var(--text);
+      line-height:1.5;
+      min-height:100vh;
+    }
+
+    /* Sidebar fixa */
+    .sidebar{
+      position:fixed;
+      left:0; top:0; bottom:0;
+      width:220px;
+      background:var(--sidebar-bg);
+      color:var(--sidebar-tx);
+      padding:18px 12px;
+      overflow:auto;
+      z-index:1000;
+    }
+    .sidebar h2{margin:0 0 12px;font-size:1.05rem}
+    .sidebar a{display:block;color:var(--sidebar-tx);text-decoration:none;padding:6px 4px;border-radius:4px}
+    .sidebar a:hover{background:rgba(255,255,255,.06)}
+
+    /* Conteúdo */
+    .wrap{margin-left:220px;padding:20px 24px 96px;max-width:980px}
+    header.page-title{margin:0 0 18px}
+    header.page-title h1{margin:0;font-size:1.6rem}
+
+    /* Cartão */
+    .card{
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      border-left:6px solid var(--accent);
+      border-radius:8px;
+      padding:16px;
+      margin-bottom:18px;
+      box-shadow:0 1px 0 rgba(0,0,0,0.02);
+    }
+
+    /* Código */
+    pre.cmd{
+      background:var(--code-bg);
+      border-radius:6px;
+      padding:12px;
+      overflow:auto;
+      margin:8px 0;
+      border:1px solid rgba(0,0,0,0.04);
+      font-family:Consolas,Monaco,"Andale Mono","Ubuntu Mono",monospace;
+      font-size:0.92rem;
+      white-space:pre-wrap;
+      word-break:break-word;
+    }
+
+    /* Botões */
+    .top-btn{
+      display:inline-block;
+      padding:8px 12px;
+      background:#007bff;
+      color:#fff;
+      border-radius:6px;
+      text-decoration:none;
+      margin-top:10px;
+    }
+
+    /* Rodapé fixo */
+    footer{
+      position:fixed;
+      left:0;right:0;bottom:0;
+      background:#0c1014;
+      color:#a7a7a7;
+      text-align:center;
+      padding:6px 0;
+      font-size:12px;
+      border-top:1px solid #1c232b;
+    }
+
+    /* Responsivo */
+    @media (max-width:900px){
+      .sidebar{
+        position:static;
+        width:auto;
+        height:auto;
+        display:flex;
+        gap:8px;
+        flex-wrap:wrap;
+        padding:10px;
+      }
+      .wrap{margin-left:0;padding:12px 14px 100px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar (Sumário) -->
+  <aside class="sidebar" aria-label="Sumário de Ativadores">
+    <h2>Ativadores</h2>
+    <a href="comandosprog.html">← Voltar p/ comandos</a>
+    <a href="#bloco-ativadores">Bloco principal</a>
+    <small style="display:block;margin-top:12px;opacity:.8">Pág: ativadores</small>
+  </aside>
+
+  <div class="wrap">
+    <header class="page-title">
+      <h1>Ativadores</h1>
+      <p>
+        <a href="comandosprog.html" class="top-btn">← Voltar para comandos</a>
+      </p>
+    </header>
+
+    <!-- ===== Único Bloco ===== -->
+    <section id="bloco-ativadores" class="card" aria-labelledby="bloco-ativadores">
+      <h2 id="bloco-ativadores">Bloco de Ativadores</h2>
+
+      <pre class="cmd">
+        <div>
+        <div><strong>Ativar Windows</strong></div>
+          <pre class="cmd"><pre><code>&lt;pre style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-style: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-tap-highlight-color: rgba(26, 26, 26, 0.3); -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; text-decoration: none; overflow-wrap: break-word; white-space: pre-wrap;"># Check massgrave.dev for more details
+
+$ErrorActionPreference = "Stop"
+
+write-host
+Write-Host "The current command (irm https://massgrave.dev/get | iex) will be retired on Aug 31, 2024."
+Write-Host -ForegroundColor Green "Use the new command (irm https://get.activated.win | iex) moving forward."
+write-host
+
+# Enable TLSv1.2 for compatibility with older clients for current session
+[Net.ServicePointManager]::SecurityProtocol=[Net.SecurityProtocolType]::Tls12
+
+$DownloadURL1 = 'https://raw.githubusercontent.com/massgravel/Microsoft-Activation-Scripts/0884271c4fcdc72d95bce7c5c7bdf77ef4a9bcef/MAS/All-In-One-Version/MAS_AIO-CRC32_31F7FD1E.cmd'
+$DownloadURL2 = 'https://bitbucket.org/WindowsAddict/microsoft-activation-scripts/raw/0884271c4fcdc72d95bce7c5c7bdf77ef4a9bcef/MAS/All-In-One-Version/MAS_AIO-CRC32_31F7FD1E.cmd'
+
+$URLs = @($DownloadURL1, $DownloadURL2)
+$RandomURL1 = Get-Random -InputObject $URLs
+$RandomURL2 = $URLs -ne $RandomURL1
+
+try {
+    $response = Invoke-WebRequest -Uri $RandomURL1 -UseBasicParsing
+}
+catch {
+	$response = Invoke-WebRequest -Uri $RandomURL2 -UseBasicParsing
+}
+
+$rand = [Guid]::NewGuid().Guid
+$isAdmin = [bool]([Security.Principal.WindowsIdentity]::GetCurrent().Groups -match 'S-1-5-32-544')
+$FilePath = if ($isAdmin) { "$env:SystemRoot\Temp\MAS_$rand.cmd" } else { "$env:TEMP\MAS_$rand.cmd" }
+
+$ScriptArgs = "$args "
+$prefix = "@::: $rand `r`n"
+$content = $prefix + $response
+Set-Content -Path $FilePath -Value $content
+
+# Set ComSpec variable for current session in case its corrupt in the system
+$env:ComSpec = "$env:SystemRoot\system32\cmd.exe"
+Start-Process cmd.exe "/c """"$FilePath"" $ScriptArgs""" -Wait
+
+$FilePaths = @("$env:TEMP\MAS*.cmd", "$env:SystemRoot\Temp\MAS*.cmd")
+foreach ($FilePath in $FilePaths) { Get-Item $FilePath | Remove-Item }&lt;/pre>
+         </div>      
+         </div>
+         </pre>
+
+      <div class="note">(repetições intencionais conforme enviado)</div>
+    </section>
+
+      <div class="block-sep"></div>
+      </pre>
+    </section>
+
+    <!-- Botão para voltar ao topo -->
+    <p style="text-align:center;margin-top:12px">
+      <a class="top-btn" href="#bloco-ativadores">Voltar ao topo</a>
+    </p>
+  </div>
+
+  <footer>
+    &copy; 2025 — comandosprog / ativadores
+  </footer>
+
+</body>
+</html>
