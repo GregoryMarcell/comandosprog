@@ -7,6 +7,7 @@
   <title>Comandos Terminal & CMD</title>
   <meta name="description" content="Comandos para macOS (Terminal) e Windows (CMD)"/>
   <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#f4f4f4" />
   <style>
     :root{
       --page-bg:#f4f4f4;
@@ -96,14 +97,13 @@
 </head>
 <body>
 
-  <!-- SIDEBAR (MENU fixo) -->
   <aside class="sidebar" aria-label="MENU">
     <h2>MENU</h2>
     <a href="#macbook">MACBOOK TERMINAL</a>
     <a href="#terminal-otimizar">Terminal - Otimizar Mac</a>
     <a href="#comando-solido">Comando Sólido</a>
     <a href="#verificar-disco">Verificar Armazenamento</a>
-    <a href="#servidor">Servidor</a> <!-- ✅ NOVO ITEM NO MENU -->
+    <a href="#servidor">Servidor</a>
     <a href="#mac-dock">Mesa e Dock (macOS)</a>
     <a href="#cmd-windows">CMD - Windows</a>
     <a href="ativadores.html">Ativadores →</a>
@@ -116,9 +116,8 @@
       <p class="note">MENU à esquerda</p>
     </header>
 
-    <!-- ===== MACBOOK TERMINAL (bloco principal) ===== -->
-    <section id="macbook" class="card" aria-labelledby="macbook">
-      <h2 id="macbook" style="margin-top:0">MACBOOK TERMINAL</h2>
+    <section id="macbook" class="card" aria-labelledby="macbook-titulo">
+      <h2 id="macbook-titulo" style="margin-top:0">MACBOOK TERMINAL</h2>
 
       <div style="border-top:1px solid #eee;margin-top:8px;padding-top:10px">
         <div><strong>Alterar o delay para mostrar o Dock</strong></div>
@@ -184,9 +183,8 @@ time dd if=/Volumes/NOMEDOPENDRIVE/testfile of=/dev/null bs=100m</pre>
 
     </section>
 
-    <!-- ===== Terminal otimizar (mac) ===== -->
-    <section id="terminal-otimizar" class="card" aria-labelledby="terminal-otimizar">
-      <h2 id="terminal-otimizar">Terminal para otimizar computador (macOS)</h2>
+    <section id="terminal-otimizar" class="card" aria-labelledby="terminal-otimizar-titulo">
+      <h2 id="terminal-otimizar-titulo">Terminal para otimizar computador (macOS)</h2>
 
       <pre class="cmd"># Desativar
 setopt +o nomatch
@@ -234,9 +232,8 @@ setopt nomatch</pre>
       <div class="note">*Aviso:* muitos desses comandos removem caches e logs — use com atenção. Alguns comandos podem exigir senha de administrador.</div>
     </section>
 
-    <!-- ===== Comando Sólido (mac) ===== -->
-    <section id="comando-solido" class="card" aria-labelledby="comando-solido">
-      <h2 id="comando-solido">Comando Sólido (macOS)</h2>
+    <section id="comando-solido" class="card" aria-labelledby="comando-solido-titulo">
+      <h2 id="comando-solido-titulo">Comando Sólido (macOS)</h2>
 
       <pre class="cmd">sync; sudo purge
 sudo rm -rfv ~/Library/Caches/*
@@ -257,15 +254,13 @@ sudo purge</pre>
 
     </section>
 
-    <!-- ===== Verificar Armazenamento ===== -->
-    <section id="verificar-disco" class="card" aria-labelledby="verificar-disco">
-      <h2 id="verificar-disco">VERIFICAR ARMAZENAMENTO DE DISCOS SERVIDOR (macOS)</h2>
+    <section id="verificar-disco" class="card" aria-labelledby="verificar-disco-titulo">
+      <h2 id="verificar-disco-titulo">VERIFICAR ARMAZENAMENTO DE DISCOS SERVIDOR (macOS)</h2>
       <pre class="cmd">df -h | grep 100.90.45.25</pre>
     </section>
 
-     <!-- ===== SERVIDOR (novo id) ===== -->
-    <section id="servidor" class="card" aria-labelledby="servidor">
-      <h2 id="servidor">Servidor</h2>
+     <section id="servidor" class="card" aria-labelledby="servidor-titulo">
+      <h2 id="servidor-titulo">Servidor</h2>
       <div>
         <div><strong>Servidor Próprio Laura — Gerenciador de Arquivos</strong></div>
         <div>Windows (Ctrl + L) &nbsp; | &nbsp; macOS (⌘ + K)</div>
@@ -273,9 +268,8 @@ sudo purge</pre>
       </div>
     </section>
 
-    <!-- ===== Mesa e Dock ===== -->
-    <section id="mac-dock" class="card" aria-labelledby="mac-dock">
-      <h2 id="mac-dock">Mesa e Dock (macOS) — configurações</h2>
+    <section id="mac-dock" class="card" aria-labelledby="mac-dock-titulo">
+      <h2 id="mac-dock-titulo">Mesa e Dock (macOS) — configurações</h2>
 
       <div class="note">
         Posição na tela: Inferior<br>
@@ -319,9 +313,8 @@ sudo purge</pre>
       </div>
     </section>
 
-    <!-- ===== CMD WINDOWS ===== -->
-    <section id="cmd-windows" class="card" aria-labelledby="cmd-windows">
-      <h2 id="cmd-windows">CMD WINDOWS</h2>
+    <section id="cmd-windows" class="card" aria-labelledby="cmd-windows-titulo">
+      <h2 id="cmd-windows-titulo">CMD WINDOWS</h2>
       
       <div>
         <div><strong>Mostrar sua senha Wi-Fi</strong></div>
@@ -369,14 +362,11 @@ sc config dmwappushservice start= disabled</pre>
       </div>
     </section>
 
-    <!-- botão voltar ao topo -->
     <p style="text-align:center;margin-top:12px">
       <a class="top-btn" href="#macbook">Voltar ao topo</a>
     </p>
 
-  </div> <!-- /wrap -->
-
-  <footer>
+  </div> <footer>
     &copy; 2025 — comandosprog
   </footer>
 
