@@ -7,6 +7,7 @@
   <title>Ativadores</title>
   <meta name="description" content="Bloco de comandos e scripts de ativadores organizados."/>
   <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#f4f4f4" />
   <style>
     :root{
       --page-bg:#f4f4f4;
@@ -114,7 +115,6 @@
 </head>
 <body>
 
-  <!-- Sidebar (MENU) -->
   <aside class="sidebar" aria-label="MENU de Ativadores">
     <h2>MENU</h2>
     <a href="index.html">← Voltar p/ comandos</a>
@@ -130,12 +130,10 @@
       </p>
     </header>
 
-    <!-- ===== Único Bloco ===== -->
-    <section id="bloco-ativadores" class="card" aria-labelledby="bloco-ativadores">
-      <h2 id="bloco-ativadores">Bloco de Ativadores</h2>
+    <section id="bloco-ativadores" class="card" aria-labelledby="bloco-ativadores-titulo">
+      <h2 id="bloco-ativadores-titulo">Bloco de Ativadores</h2>
 		        <div><strong>Ativar Windows</strong></div>
-
-
+		
       <pre class="cmd">
           <pre class="cmd"><pre><code>&lt;pre style="caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-style: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-tap-highlight-color: rgba(26, 26, 26, 0.3); -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px; text-decoration: none; overflow-wrap: break-word; white-space: pre-wrap;"># Check massgrave.dev for more details
 
@@ -180,8 +178,7 @@ $FilePaths = @("$env:TEMP\MAS*.cmd", "$env:SystemRoot\Temp\MAS*.cmd")
 foreach ($FilePath in $FilePaths) { Get-Item $FilePath | Remove-Item }&lt;/pre>
     </section>
 
-    <!-- Botão para voltar ao topo -->
-    <p style="text-align:center;margin-top:12px">
+<p style="text-align:center;margin-top:12px">
       <a class="top-btn" href="#bloco-ativadores">Voltar ao topo</a>
     </p>
   </div>
