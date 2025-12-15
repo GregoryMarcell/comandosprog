@@ -255,8 +255,10 @@ sudo purge</pre>
     </section>
 
     <section id="verificar-disco" class="card" aria-labelledby="verificar-disco-titulo">
-      <h2 id="verificar-disco-titulo">VERIFICAR ARMAZENAMENTO DE DISCOS SERVIDOR (macOS)</h2>
+      <h2 id="verificar-disco-titulo">VERIFICAR e REINICIAR ARMAZENAMENTO DE DISCOS SERVIDOR (macOS)</h2>
       <pre class="cmd">df -h | grep 100.90.45.25</pre>
+      <div><strong>Reiniciar NAS</strong></div>
+      <pre class="cmd"> ssh servidor-local@100.90.45.25 "shutdown /r /t 0"</pre>
     </section>
 
      <section id="servidor" class="card" aria-labelledby="servidor-titulo">
