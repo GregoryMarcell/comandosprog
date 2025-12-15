@@ -186,48 +186,29 @@ time dd if=/Volumes/NOMEDOPENDRIVE/testfile of=/dev/null bs=100m</pre>
     <section id="terminal-otimizar" class="card" aria-labelledby="terminal-otimizar-titulo">
       <h2 id="terminal-otimizar-titulo">Terminal para otimizar computador (macOS)</h2>
 
-      <pre class="cmd"># Desativar
-setopt +o nomatch
+      <pre class="cmd">#!/bin/bash
 
-# Limpar o cache do sistema
-sudo rm -rfv /Library/Caches/*
-sudo rm -rfv ~/Library/Caches/*
+# 1. Previne perda de dados gravando cache no disco
+sync
+
+# 2. Limpa cache de DNS e roda scripts de manutenção do UNIX
 sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
-sudo sysctl vm.swappiness=10
 sudo periodic daily weekly monthly
 
-# Limpar logs do sistema
-sudo rm -rf /private/var/log/*
-sudo rm -rfv /var/log/*
-sudo rm -rfv /Library/Logs/*
-sudo rm -rf /Library/Logs/*
-sudo rm -rfv ~/Library/Logs/*
-sudo rm -rf ~/Library/Logs/*
+# 3. Verifica a integridade do sistema de arquivos (SSD/APFS)
+# Se houver erro grave, ele avisará aqui.
+diskutil verifyVolume /
 
-# Limpar cache do Google Chrome (Mac)
-rm -rf ~/Library/Caches/Google/Chrome
+# 4. Busca e instala TODAS as atualizações de sistema disponíveis
+# (Requer internet e pode pedir reinicialização ao final)
+sudo softwareupdate --install --all --verbose
 
-# Forçar a liberação de memória
+# 5. Finalização
 sudo purge
-sync; sudo purge
+killall Finder
+killall Dock
 
-sudo mdutil -E
-sudo rm -rf /.metadata_never_index
-sudo mdutil -E /
-
-# Limpar cache do Safari
-rm -rf ~/Library/Caches/com.apple.Safari
-rm -rf ~/Library/Caches/com.apple.Safari/*
-
-# Verificar e reparar permissões de disco
-sudo diskutil resetUserPermissions / `id -u`
-
-# Atualizar os aplicativos do sistema 
-sudo softwareupdate -ia
-softwareupdate --install --all
-
-# Ativar
-setopt nomatch</pre>
+echo "✅ Procedimento finalizado. Se houve atualizações, reinicie o Mac."</pre>
 
       <div class="note">*Aviso:* muitos desses comandos removem caches e logs — use com atenção. Alguns comandos podem exigir senha de administrador.</div>
     </section>
