@@ -235,22 +235,12 @@ setopt nomatch</pre>
     <section id="comando-solido" class="card" aria-labelledby="comando-solido-titulo">
       <h2 id="comando-solido-titulo">Comando Sólido (macOS)</h2>
 
-      <pre class="cmd">sync; sudo purge
-sudo rm -rfv ~/Library/Caches/*
+      <pre class="cmd">sync
 sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
-sudo rm -rf /private/var/log/*
-sudo rm -rfv /var/log/*
-sudo rm -rfv /Library/Logs/*
-sudo rm -rf /Library/Logs/*
-sudo rm -rfv ~/Library/Logs/*
-sudo rm -rf ~/Library/Logs/*
-sudo rm -rf /Library/Logs/*
-rm -rf ~/Library/Caches/Google/Chrome
 sudo periodic daily weekly monthly
 sudo purge
-sync; sudo purge
-sudo sysctl vm.swappiness=10
-sudo purge</pre>
+killall Finder
+killall Dock</pre>
 
     </section>
 
